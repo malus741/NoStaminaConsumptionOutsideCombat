@@ -10,7 +10,7 @@ void MessageHandler(SKSE::MessagingInterface::Message* a_msg)
 		break;
 	case SKSE::MessagingInterface::kDataLoaded:  // All ESM/ESL/ESP plugins have loaded, main menu is now active.
 		// It is now safe to access form data.
-		Hooks::install();
+		
 		break;
 
 		// Skyrim game events.
@@ -104,6 +104,7 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 	if (!messaging->RegisterListener("SKSE", MessageHandler)) {
 		return false;
 	}
-
+	
+	Hooks::install();
 	return true;
 }
